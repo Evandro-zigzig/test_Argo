@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: clean-api-prod
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: clean-api=ghcr.io/YOUR_ORG/clean-api
+    argocd-image-updater.argoproj.io/clean-api.update-strategy: latest
+    argocd-image-updater.argoproj.io/write-back-method: git
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/YOUR_ORG/YOUR_REPO.git  # substituir
+    targetRevision: main
+    path: k8s/overlays/prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: production
+  syncPolicy:
+    automated:
+      prune: true       # remove recursos deletados do Git
+      selfHeal: true    # reverte mudanças manuais no cluster
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+    retry:
+      limit: 3
+      backoff:
+        duration: 10s
+        factor: 2
+        maxDuration: 3m
