@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: clean-api
+  namespace: argocd
+spec:
+  description: Clean Architecture API project
+  sourceRepos:
+    - https://github.com/YOUR_ORG/YOUR_REPO.git
+  destinations:
+    - namespace: production
+      server: https://kubernetes.default.svc
+    - namespace: development
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
