@@ -7,12 +7,12 @@ metadata:
 spec:
   project: clean-api
   source:
-    repoURL: https://github.com/Evandro-zigzig/test_Argo
+    repoURL: https://github.com/Evandro-zigzig/test_Argo.git
     targetRevision: develop
-    path: k8s/overlays/dev
+    path: ./k8s/base
   destination:
     server: https://kubernetes.default.svc
-    namespace: development
+    namespace: mentoria
   syncPolicy:
     automated:
       prune: true
