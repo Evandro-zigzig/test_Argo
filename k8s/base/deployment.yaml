@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: clean-api
+  namespace: mentoria
   labels:
     app: clean-api
 spec:
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
         - name: clean-api
-          image: ghcr.io/YOUR_ORG/clean-api:latest
+          image: kubeivan/kube-news:v2
           ports:
             - containerPort: 8000
           resources:

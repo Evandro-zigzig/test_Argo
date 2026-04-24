@@ -3,14 +3,11 @@ kind: Application
 metadata:
   name: clean-api-dev
   namespace: argocd
-  annotations:
-    argocd-image-updater.argoproj.io/image-list: clean-api=ghcr.io/YOUR_ORG/clean-api
-    argocd-image-updater.argoproj.io/clean-api.update-strategy: latest
-    argocd-image-updater.argoproj.io/write-back-method: argocd
+  
 spec:
   project: clean-api
   source:
-    repoURL: https://github.com/YOUR_ORG/YOUR_REPO.git
+    repoURL: https://github.com/Evandro-zigzig/test_Argo
     targetRevision: develop
     path: k8s/overlays/dev
   destination:
