@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/Evandro-zigzig/test_Argo.git
     targetRevision: develop
-    path: ./k8s/base
+    path: k8s/base
   destination:
     server: https://kubernetes.default.svc
     namespace: mentoria
