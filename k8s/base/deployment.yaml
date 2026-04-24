@@ -17,7 +17,8 @@ spec:
     spec:
       containers:
         - name: clean-api
-          image: ghcr.io/evandro-zigzig/test_argo:latest
+          image: evandrozigzig/clean-api:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 8000
           resources:
