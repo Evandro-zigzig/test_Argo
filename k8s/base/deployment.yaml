@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: clean-api
-          image: kubeivan/kube-news:v2
+          image: ghcr.io/evandro-zigzig/test_argo:latest
           ports:
             - containerPort: 8000
           resources:
